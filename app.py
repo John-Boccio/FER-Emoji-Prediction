@@ -28,7 +28,7 @@ class App(object):
     def _init_gui(self):
         self.window = tk.Tk()
         self.window.title("FER Emoji Prediction")
-        self.window.geometry(f'{self.width}x{self.height}')
+        self.window.geometry(f'{1400}x{800}')
         # Don't allow any resizing
         self.window.resizable(0, 0)
 
@@ -49,7 +49,7 @@ class App(object):
         self.lbl2.grid(row=1, columnspan=2)
 
         self.emoji1 = ttk.Label()
-        self.emoji1.grid(row=2, columnspan=2)
+        self.emoji1.grid(row=2, columnspan=2,padx=10, pady=10)
 
         self.find_emojis_button = ttk.Button(self.window, text="Find Emoji's", command=self._find_emojis_event)
         self.find_emojis_button.grid(row=3, columnspan=2, padx=self.padx, pady=self.pady)
@@ -119,6 +119,8 @@ class App(object):
             surprise = ImageTk.PhotoImage(Image.open("images/emojis/surprise/surprise.png"))
             self.emoji1.configure(image=surprise)
             self.emoji1.image = surprise
+
+        self.emoji1.r
 
     def _find_emojis_event(self):
         _, image = self.video_stream.read()
