@@ -39,7 +39,8 @@ class App(object):
         self.video_stream.release()
 
     def _update_face(self, image):
-        image_tk = ImageTk.PhotoImage(Image.fromarray(image))
+        image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image_tk = ImageTk.PhotoImage(Image.fromarray(image_rgb))
         self.face_label.configure(image=image_tk)
         self.face_label.image = image_tk
 
