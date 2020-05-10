@@ -48,8 +48,11 @@ class App(object):
                               font=('cambria', 20, ' bold '))
         self.lbl2.grid(row=1, columnspan=2)
 
+        self.emoji1 = ttk.Label()
+        self.emoji1.grid(row=2, columnspan=2)
+
         self.find_emojis_button = ttk.Button(self.window, text="Find Emoji's", command=self._find_emojis_event)
-        self.find_emojis_button.grid(row=2, columnspan=2, padx=self.padx, pady=self.pady)
+        self.find_emojis_button.grid(row=3, columnspan=2, padx=self.padx, pady=self.pady)
 
     def run(self):
         self.window.mainloop()
