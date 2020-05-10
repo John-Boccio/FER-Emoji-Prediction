@@ -28,7 +28,7 @@ class App(object):
         self.capture_image = ttk.Button(
             self.window,
             text="Capture Image",
-            command=self.capture_image_clicked
+            command=self._capture_image_clicked
         )
         self.capture_image.pack(side=tk.BOTTOM, padx=10, pady= 10)
 
@@ -38,12 +38,16 @@ class App(object):
     def end(self):
         self.video_stream.release()
 
-    def capture_image_clicked(self):
+    def _update_face(self, image):
+        image_tk = ImageTk.PhotoImage(Image.fromarray(image))
+        self.face_label.configure(image=image_tk)
+        self.face_label.image = image_tk
+
+    def _capture_image_clicked(self):
         _, image = self.video_stream.read()
         face = fer.find_face(image)
         if face is None:
-            tk_img = ImageTk.PhotoImage(Image.fromarray(image))
-            self.face_label.configure(image=tk_img)
+            self._update_face(image)
             print("No face found")
             return
 
@@ -52,7 +56,6 @@ class App(object):
         expression, probabilities = fer.get_expression(self.cnn, self.img_transform(Image.fromarray(face_img)))
         cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
         cv2.putText(image, expression, (left, top - 5), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
-        tk_img = ImageTk.PhotoImage(Image.fromarray(image))
-        self.face_label.configure(image=tk_img)
+        self._update_face(image)
 
         print(f"Image Captured -\tExpression: {expression:<10}\tProbabilities: {probabilities}")
