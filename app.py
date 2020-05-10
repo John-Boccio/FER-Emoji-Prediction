@@ -13,12 +13,12 @@ class App(object):
         self.img_transform = img_transform
 
         self.width = 1080
-        self.height = 720
+        self.height = 650
         self.padx = 10
         self.pady = 10
         self.img_width = int((self.width - 4*self.padx) / 2)
         img_width_ratio = self.img_width / self.width
-        self.img_height = int(self.height * img_width_ratio)
+        self.img_height = int(self.img_width * (3/4))
 
         self.video_stream = cv2.VideoCapture(0)
 
@@ -40,12 +40,6 @@ class App(object):
         self.graph_label = ttk.Label()
         self.graph_label.grid(row=0, column=1, padx=10, pady=10)
         self.fig, self.ax = plt.subplots()
-        plt.title("Probabilities For Each Expression")
-        plt.xlabel("Expression")
-        plt.xticks(rotation=45)
-        plt.ylabel("Probability")
-        plt.ylim(0.0, 1.0)
-        plt.tight_layout()
         self._update_graph([1/len(self.expressions)] * len(self.expressions))
 
         self.find_emojis_button = ttk.Button(self.window, text="Find Emoji's", command=self._find_emojis_event)
@@ -66,8 +60,15 @@ class App(object):
         self.face_label.image = image_tk
 
     def _update_graph(self, probabilities):
-        plt.bar(self.expressions, probabilities)
-        plt.savefig("images/plot.jpg", dpi=1200, quality=100)
+        plt.cla()
+        plt.title("Probabilities For Each Expression")
+        plt.xlabel("Expression")
+        plt.xticks(rotation=45)
+        plt.ylabel("Probability")
+        plt.ylim(0.0, 1.0)
+        plt.tight_layout()
+        self.ax.bar(self.expressions, probabilities)
+        plt.savefig("images/plot.jpg", dpi=1200, quality=100, bbox_inches='tight')
         image = Image.open("images/plot.jpg")
         image = image.resize((self.img_width, self.img_height))
         image_tk = ImageTk.PhotoImage(image)
