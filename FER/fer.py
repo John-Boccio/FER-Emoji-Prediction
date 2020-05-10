@@ -27,17 +27,17 @@ def get_expression(model, img):
 
 
 def find_face(image):
-    downscaled_img = cv2.resize(image, (0, 0), fx=0.5, fy=0.5)
+    downscaled_img = cv2.resize(image, (0, 0), fx=0.25, fy=0.25)
     downscaled_img_rgb = cv2.cvtColor(downscaled_img, cv2.COLOR_BGR2RGB)
-    faces = face_recognition.face_locations(downscaled_img_rgb)
+    faces = face_recognition.face_locations(downscaled_img_rgb, model="cnn")
     if len(faces) == 0:
         return None
 
     top, right, bottom, left = faces[0]
-    top *= int(1/.5)
-    right *= int(1/.5)
-    bottom *= int(1/.5)
-    left *= int(1/.5)
+    top *= int(1/.25)
+    right *= int(1/.25)
+    bottom *= int(1/.25)
+    left *= int(1/.25)
     return {
         'top': top,
         'right': right,
