@@ -45,11 +45,11 @@ class App(object):
         self.userExpression.set("Your expression is: ")
 
         self.lbl2 = ttk.Label(self.window,textvariable=self.userExpression,
-                        width=200, font=('cambria', 20, ' bold '))
-        self.lbl2.pack(side=tk.BOTTOM)
+                        width=20, font=('cambria', 20, ' bold '))
+        self.lbl2.grid(row=1, columnspan=2)
 
         self.find_emojis_button = ttk.Button(self.window, text="Find Emoji's", command=self._find_emojis_event)
-        self.find_emojis_button.grid(row=1, columnspan=2, padx=self.padx, pady=self.pady)
+        self.find_emojis_button.grid(row=2, columnspan=2, padx=self.padx, pady=self.pady)
 
     def run(self):
         self.window.mainloop()
@@ -136,6 +136,4 @@ class App(object):
         self.userExpression.set("Your expression is: " + expression)
         self._update_emojis(expression)
         print(f"Image Captured -\tExpression: {expression:<10}\tProbabilities: {probabilities}")
-
-
 
