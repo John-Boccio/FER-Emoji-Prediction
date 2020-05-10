@@ -11,12 +11,11 @@ class App(object):
         self.cnn = cnn
         self.img_transform = img_transform
 
-        self.width = 1080
-        self.height = 650
+        self.width = 1400
+        self.height = 800
         self.padx = 10
         self.pady = 10
         self.img_width = int((self.width - 4 * self.padx) / 2)
-        img_width_ratio = self.img_width / self.width
         self.img_height = int(self.img_width * (3 / 4))
 
         self.video_stream = cv2.VideoCapture(0)
@@ -28,7 +27,7 @@ class App(object):
     def _init_gui(self):
         self.window = tk.Tk()
         self.window.title("FER Emoji Prediction")
-        self.window.geometry(f'{1400}x{800}')
+        self.window.geometry(f'{self.width}x{self.height}')
         # Don't allow any resizing
         self.window.resizable(0, 0)
 
