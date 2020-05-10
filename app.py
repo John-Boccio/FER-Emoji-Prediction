@@ -19,8 +19,12 @@ class App(object):
         self.window = tk.Tk()
         self.window.title("FER Emoji Prediction")
         self.window.geometry('720x480')
-        self.face_label = ttk.Label()
+
+        blank_profile_picture = ImageTk.PhotoImage(Image.open('images/blank-profile-picture.jpg'))
+        self.face_label = ttk.Label(image=blank_profile_picture)
+        self.face_label.image = blank_profile_picture
         self.face_label.pack(side=tk.LEFT, padx=10, pady=10)
+
         self.capture_image = ttk.Button(
             self.window,
             text="Capture Image",
