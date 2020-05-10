@@ -45,7 +45,7 @@ class App(object):
         self.userExpression.set("Your expression is: ")
 
         self.lbl2 = ttk.Label(self.window,textvariable=self.userExpression,
-                        width=20, font=('cambria', 20, ' bold '))
+                              font=('cambria', 20, ' bold '))
         self.lbl2.grid(row=1, columnspan=2)
 
         self.find_emojis_button = ttk.Button(self.window, text="Find Emoji's", command=self._find_emojis_event)
