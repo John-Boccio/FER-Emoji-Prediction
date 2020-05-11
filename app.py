@@ -85,41 +85,39 @@ class App(object):
 
     def _update_emojis(self, expression):
         if expression == "HAPPY":
-            happy = ImageTk.PhotoImage(Image.open("images/emojis/happy/happy.png"))
+            happy = ImageTk.PhotoImage(Image.open("images/emojis/happy/happy.jpeg"))
             self.emoji1.configure(image=happy)
             self.emoji1.image = happy
 
         elif expression == "ANGRY":
-            angry = ImageTk.PhotoImage(Image.open("images/emojis/angry/angry.png"))
+            angry = ImageTk.PhotoImage(Image.open("images/emojis/angry/angry.jpeg"))
             self.emoji1.configure(image=angry)
             self.emoji1.image = angry
 
         elif expression == "DISGUST":
-            disgust = ImageTk.PhotoImage(Image.open("images/emojis/disgust/disgust.png"))
+            disgust = ImageTk.PhotoImage(Image.open("images/emojis/disgust/disgust.jpeg"))
             self.emoji1.configure(image=disgust)
             self.emoji1.image = disgust
 
         elif expression == "FEAR":
-            fear = ImageTk.PhotoImage(Image.open("images/emojis/fear/fear.png"))
+            fear = ImageTk.PhotoImage(Image.open("images/emojis/fear/fear.jpeg"))
             self.emoji1.configure(image=fear)
             self.emoji1.image = fear
 
         elif expression == "NEUTRAL":
-            natural = ImageTk.PhotoImage(Image.open("images/emojis/natural/natural.png"))
+            natural = ImageTk.PhotoImage(Image.open("images/emojis/natural/natural.jpeg"))
             self.emoji1.configure(image=natural)
             self.emoji1.image = natural
 
         elif expression == "SAD":
-            sad = ImageTk.PhotoImage(Image.open("images/emojis/sad/sad.png"))
+            sad = ImageTk.PhotoImage(Image.open("images/emojis/sad/sad.jpeg"))
             self.emoji1.configure(image=sad)
             self.emoji1.image = sad
 
         elif expression == "SURPRISE":
-            surprise = ImageTk.PhotoImage(Image.open("images/emojis/surprise/surprise.png"))
+            surprise = ImageTk.PhotoImage(Image.open("images/emojis/surprise/surprise.jpeg"))
             self.emoji1.configure(image=surprise)
             self.emoji1.image = surprise
-
-        self.emoji1.r
 
     def _find_emojis_event(self):
         _, image = self.video_stream.read()
