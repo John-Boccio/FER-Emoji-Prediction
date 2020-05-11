@@ -41,7 +41,7 @@ class App(object):
         self._update_graph([1/len(self.expressions)] * len(self.expressions))
 
         self.userExpression = tk.StringVar()
-        self.userExpression.set("Your expression is: ")
+        self.userExpression.set("Press the 'Find Emoji's' button below capture an image and get recommended emoji's!")
 
         self.lbl2 = ttk.Label(self.window,textvariable=self.userExpression,
                               font=('cambria', 20, ' bold '))
@@ -85,37 +85,37 @@ class App(object):
 
     def _update_emojis(self, expression):
         if expression == "HAPPY":
-            happy = ImageTk.PhotoImage(Image.open("images/emojis/happy/happy.jpeg"))
+            happy = ImageTk.PhotoImage(Image.open("images/emojis/happy/happy.jpg"))
             self.emoji1.configure(image=happy)
             self.emoji1.image = happy
 
         elif expression == "ANGRY":
-            angry = ImageTk.PhotoImage(Image.open("images/emojis/angry/angry.jpeg"))
+            angry = ImageTk.PhotoImage(Image.open("images/emojis/angry/angry.jpg"))
             self.emoji1.configure(image=angry)
             self.emoji1.image = angry
 
         elif expression == "DISGUST":
-            disgust = ImageTk.PhotoImage(Image.open("images/emojis/disgust/disgust.jpeg"))
+            disgust = ImageTk.PhotoImage(Image.open("images/emojis/disgust/disgust.jpg"))
             self.emoji1.configure(image=disgust)
             self.emoji1.image = disgust
 
         elif expression == "FEAR":
-            fear = ImageTk.PhotoImage(Image.open("images/emojis/fear/fear.jpeg"))
+            fear = ImageTk.PhotoImage(Image.open("images/emojis/fear/fear.jpg"))
             self.emoji1.configure(image=fear)
             self.emoji1.image = fear
 
         elif expression == "NEUTRAL":
-            natural = ImageTk.PhotoImage(Image.open("images/emojis/natural/natural.jpeg"))
+            natural = ImageTk.PhotoImage(Image.open("images/emojis/natural/natural.jpg"))
             self.emoji1.configure(image=natural)
             self.emoji1.image = natural
 
         elif expression == "SAD":
-            sad = ImageTk.PhotoImage(Image.open("images/emojis/sad/sad.jpeg"))
+            sad = ImageTk.PhotoImage(Image.open("images/emojis/sad/sad.jpg"))
             self.emoji1.configure(image=sad)
             self.emoji1.image = sad
 
         elif expression == "SURPRISE":
-            surprise = ImageTk.PhotoImage(Image.open("images/emojis/surprise/surprise.jpeg"))
+            surprise = ImageTk.PhotoImage(Image.open("images/emojis/surprise/surprise.jpg"))
             self.emoji1.configure(image=surprise)
             self.emoji1.image = surprise
 
@@ -135,7 +135,7 @@ class App(object):
         cv2.putText(image, expression, (left, top - 5), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
         self._update_face(image)
         self._update_graph(probabilities)
-        self.userExpression.set("Your expression is: " + expression)
+        self.userExpression.set(f"Your expression is '{expression}'! Recommended emoji's:")
         self._update_emojis(expression)
         print(f"Image Captured -\tExpression: {expression:<10}\tProbabilities: {probabilities}")
 
